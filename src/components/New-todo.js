@@ -2,17 +2,17 @@ import React, { useContext } from "react";
 import TodosContext from "../context/todos/todos.context";
 import Button from "@material-ui/core/Button";
 
-const NewTodoItem = () => {
+const NewTodoButton = () => {
   const todosContext = useContext(TodosContext);
-  const { openCreateModal } = todosContext;
+  const { toggleCreateBar } = todosContext;
 
   return (
     <div className="">
-      <Button className="btn" onClick={openCreateModal}>
+      <Button className="btn" onClick={toggleCreateBar}>
         New
       </Button>
     </div>
   );
 };
 
-export default NewTodoItem;
+export default NewTodoButton;

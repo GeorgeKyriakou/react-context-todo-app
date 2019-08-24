@@ -4,6 +4,7 @@ import TodosContext from "../context/todos/todos.context";
 import Navbar from "./Navbar";
 import ConfirmModal from "./Confirm";
 import Alert from "./Alert";
+import NewTodoBar from "./New-todo-bar";
 
 import MaterialTable from "material-table";
 import AddBox from "@material-ui/icons/AddBox";
@@ -33,7 +34,8 @@ const Todos = () => {
     todos,
     updateTodo,
     openConfirmModal,
-    isConfirmModalOpen
+    isConfirmModalOpen,
+    isCreateTodoBaraOpen
   } = todosContext;
 
   useEffect(() => {
@@ -51,6 +53,7 @@ const Todos = () => {
         <div className="todos-container">
           <div style={{ maxWidth: "100%" }}>
             <Alert />
+            {isCreateTodoBaraOpen && <NewTodoBar></NewTodoBar>}
             {isConfirmModalOpen && <ConfirmModal />}
             <MaterialTable
               icons={tableIcons}
@@ -95,12 +98,6 @@ const Todos = () => {
       </Fragment>
     );
   }
-};
-
-const todosStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(1, 1fr)",
-  gridGap: "1rem"
 };
 
 export default Todos;

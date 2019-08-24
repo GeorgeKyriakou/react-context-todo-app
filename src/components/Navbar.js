@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import TodosContext from "../context/todos/todos.context";
 
-import NewTodoItem from "./New-todo";
+import NewTodoButton from "./New-todo";
 
 const Navbar = () => {
   const todosContext = useContext(TodosContext);
@@ -14,7 +14,7 @@ const Navbar = () => {
       </h3>
       <ul>
         <li>
-          <NewTodoItem />
+          <NewTodoButton />
         </li>
       </ul>
     </nav>

@@ -12,7 +12,7 @@ export default (state, action) => {
     case fromTypes.CREATE_TODO_SUCCESS: {
       return {
         ...state,
-        users: [],
+        todos: [...state.todos, action.payload],
         loading: false
       };
     }
@@ -36,7 +36,12 @@ export default (state, action) => {
         loading: false
       };
     }
-
+    case fromTypes.TOGGLE_CREATE_TODO_BAR: {
+      return {
+        ...state,
+        isCreateTodoBaraOpen: !state.isCreateTodoBaraOpen
+      };
+    }
     case fromTypes.OPEN_CONFIRM_MODAL: {
       return {
         ...state,

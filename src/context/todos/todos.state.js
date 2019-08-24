@@ -11,6 +11,7 @@ const TodosState = props => {
     todos: [],
     selectedTodo: null,
     isConfirmModalOpen: false,
+    isCreateTodoBaraOpen: false,
     showAlert: false,
     alertMessage: null,
     alert: null,
@@ -86,6 +87,9 @@ const TodosState = props => {
     }, 5000);
   };
 
+  const toggleCreateBar = () =>
+    dispatch({ type: fromTypes.TOGGLE_CREATE_TODO_BAR });
+
   return (
     <TodosContext.Provider
       value={{
@@ -95,6 +99,7 @@ const TodosState = props => {
         showAlert: state.showAlert,
         alert: state.alert,
         alertMessage: state.alertMessage,
+        isCreateTodoBaraOpen: state.isCreateTodoBaraOpen,
         loading: state.loading,
         loadTodos,
         createTodo,
@@ -103,7 +108,8 @@ const TodosState = props => {
         setLoading,
         openConfirmModal,
         closeModal,
-        setAlert
+        setAlert,
+        toggleCreateBar
       }}
     >
       {props.children}
