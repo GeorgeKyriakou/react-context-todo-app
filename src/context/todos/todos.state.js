@@ -9,7 +9,11 @@ import * as fromTypes from "./todos.types";
 const TodosState = props => {
   const initialState = {
     todos: [],
-    openCreateModal: false,
+    selectedTodo: null,
+    isConfirmModalOpen: false,
+    showAlert: false,
+    alertMessage: null,
+    alert: null,
     loading: false
   };
 
@@ -65,19 +69,41 @@ const TodosState = props => {
   const setLoading = () => dispatch({ type: fromTypes.SET_LOADING });
 
   //Open create todo modal
-  const openCreateModal = () => dispatch({ type: fromTypes.OPEN_CREATE_MODAL });
+  const openConfirmModal = todo =>
+    dispatch({ type: fromTypes.OPEN_CONFIRM_MODAL, payload: todo });
+
+  const closeModal = () => dispatch({ type: fromTypes.CLOSE_CONFIRM_MODAL });
+
+  const setAlert = message => {
+    dispatch({
+      type: fromTypes.SHOW_ALERT,
+      payload: message
+    });
+    setTimeout(() => {
+      dispatch({
+        type: fromTypes.HIDE_ALERT
+      });
+    }, 5000);
+  };
 
   return (
     <TodosContext.Provider
       value={{
         todos: state.todos,
+        isConfirmModalOpen: state.isConfirmModalOpen,
+        selectedTodo: state.selectedTodo,
+        showAlert: state.showAlert,
+        alert: state.alert,
+        alertMessage: state.alertMessage,
         loading: state.loading,
         loadTodos,
         createTodo,
         updateTodo,
         removeTodo,
         setLoading,
-        openCreateModal
+        openConfirmModal,
+        closeModal,
+        setAlert
       }}
     >
       {props.children}

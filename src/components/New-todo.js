@@ -6,13 +6,9 @@ const NewTodoItem = () => {
   const todosContext = useContext(TodosContext);
   const { openCreateModal } = todosContext;
 
-  const showModal = () => {
-    openCreateModal();
-  };
-
   return (
     <div className="">
-      <Button className="btn" onClick={showModal}>
+      <Button className="btn" onClick={openCreateModal}>
         New
       </Button>
     </div>

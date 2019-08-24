@@ -3,7 +3,8 @@
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
-  --success-color: #28a745;
+  --success-color: #51cc6d;
+  --success-border-color: #44a35a;
 }
 
 .navbar {
@@ -33,4 +34,30 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.alert {
+  padding: 0.7rem;
+  width: 95%;
+  margin: 1rem auto;
+  opacity: 0.9;
+  border: 1px solid var(--success-border-color);
+  background: var(--success-color);
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+  padding-left: 2%;
+  z-index: 1;
+  width: 95%;
+  opacity: 0.9;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
 }

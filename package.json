@@ -10,6 +10,8 @@
     "material-table": "^1.50.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-material-modal": "^0.0.2",
+    "react-modal": "^3.10.1",
     "react-scripts": "3.1.1"
   },
   "scripts": {

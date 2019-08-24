@@ -31,19 +31,37 @@ export default (state, action) => {
       return {
         ...state,
         todos: state.todos.filter(todo => todo.id !== removedTodo.id),
+        selectedTodo: null,
+        isConfirmModalOpen: false,
         loading: false
       };
     }
-    case fromTypes.OPEN_CREATE_MODAL: {
+
+    case fromTypes.OPEN_CONFIRM_MODAL: {
       return {
         ...state,
-        openCreateModal: true
+        selectedTodo: action.payload,
+        isConfirmModalOpen: true
       };
     }
-    case fromTypes.CLOSE_CREATE_MODAL: {
+    case fromTypes.CLOSE_CONFIRM_MODAL: {
       return {
         ...state,
-        openCreateModal: false
+        isConfirmModalOpen: false
+      };
+    }
+
+    case fromTypes.SHOW_ALERT: {
+      return {
+        ...state,
+        alertMessage: action.payload,
+        showAlert: true
+      };
+    }
+    case fromTypes.HIDE_ALERT: {
+      return {
+        ...state,
+        showAlert: false
       };
     }
     default:

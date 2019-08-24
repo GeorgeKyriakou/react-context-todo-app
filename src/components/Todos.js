@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, forwardRef, Fragment } from "react";
 
 import TodosContext from "../context/todos/todos.context";
-import NewTodoItem from "./New-todo";
+import Navbar from "./Navbar";
+import ConfirmModal from "./Confirm";
+import Alert from "./Alert";
 
 import MaterialTable from "material-table";
 import AddBox from "@material-ui/icons/AddBox";
@@ -30,7 +32,8 @@ const Todos = () => {
     loadTodos,
     todos,
     updateTodo,
-    removeTodo
+    openConfirmModal,
+    isConfirmModalOpen
   } = todosContext;
 
   useEffect(() => {
@@ -43,21 +46,19 @@ const Todos = () => {
   } else {
     return (
       <Fragment>
-        <div className="navbar">
-          <h1 className="header">In queue: {todos.length}</h1>
-          <div className="create-new">
-            <NewTodoItem />
-          </div>
-        </div>
+        <Navbar></Navbar>
+
         <div className="todos-container">
           <div style={{ maxWidth: "100%" }}>
+            <Alert />
+            {isConfirmModalOpen && <ConfirmModal />}
             <MaterialTable
               icons={tableIcons}
               title=""
               isLoading={loading}
               columns={[
                 {
-                  title: "Status",
+                  title: "Done",
                   field: "completed",
                   render: rowData => (rowData.completed ? <Check /> : ""),
                   headerStyle: { width: "10%", padding: "1%" }
@@ -84,7 +85,7 @@ const Todos = () => {
                   icon: () => <DeleteForever />,
                   tooltip: "Remove",
                   onClick: (_, todo) => {
-                    removeTodo(todo);
+                    openConfirmModal(todo);
                   }
                 }
               ]}
