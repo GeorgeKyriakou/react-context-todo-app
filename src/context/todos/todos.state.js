@@ -5,7 +5,9 @@ import TodosContext from "./todos.context";
 import TodosReducer from "./todos.reducer";
 
 import * as fromTypes from "./todos.types";
+import Generator from "../../util/Generator";
 
+const generator = new Generator();
 const TodosState = props => {
   const initialState = {
     todos: [],
@@ -40,6 +42,12 @@ const TodosState = props => {
       type: fromTypes.CREATE_TODO_SUCCESS,
       payload: res.data
     });
+  };
+
+  const generateTodo = () => {
+    setLoading();
+    const generated = generator.getRandom();
+    createTodo(generated);
   };
 
   // Update Todo
@@ -109,7 +117,8 @@ const TodosState = props => {
         openConfirmModal,
         closeModal,
         setAlert,
-        toggleCreateBar
+        toggleCreateBar,
+        generateTodo
       }}
     >
       {props.children}
