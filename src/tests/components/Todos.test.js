@@ -1,15 +1,31 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
+
 import Todos from "../../components/Todos";
+import Navbar from "../../components/Navbar";
 
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+jest.mock("../../context/todos/todos.state");
 
-configure({ adapter: new Adapter() });
+const context = {
+  loadTodos: jest.fn(),
+  createTodo: jest.fn(),
+  updateTodo: jest.fn(),
+  removeTodo: jest.fn(),
+  setLoading: jest.fn(),
+  openConfirmModal: jest.fn(),
+  closeModal: jest.fn(),
+  setAlert: jest.fn(),
+  toggleCreateBar: jest.fn(),
+  generateTodo: jest.fn()
+};
 
 describe("<Todos/>", () => {
-  it("renders without crashing", async () => {
-    const editor = shallow(<Todos></Todos>);
-    expect(editor.find("Navbar").length).toEqual(1);
+  test("function called on click", () => {
+    const component = shallow(<Navbar />).dive();
+    expect(1).toBe(1);
+    act(() => {
+      component.find("#generate-btn").simulate("click");
+      expect(context.generateTodo.mock.calls.length).toBe(1);
+    });
   });
 });

@@ -1,68 +1,71 @@
+## description
+
+This repo is a test TODO application using React with the [usage](#usage) and [requirements](#requirements) listed below.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## usage
 
-### `npm start`
+First start the server side app which can be found in this [repo](https://github.com/GeorgeKyriakou/todos-express-typescript)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Install all dependencies by running the following in the root of this project ([Yarn](https://yarnpkg.com) needs to be installed as a prerequisite):
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+yarn install
+```
 
-### `npm test`
+2. build the application by running:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn build
+```
 
-### `npm run build`
+3. start the application by running:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn start
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## requirements
 
-### `npm run eject`
+These are the requirements for the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Creating, reading, updating and deleting To Do items. (done)
+- Each item should have a title, description and a due date. There is no need for a database in the back-end, but you can use one if you want (done)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```json
+{
+  "title": "foo",
+  "description": "bar",
+  "due_date": new Date()
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Sorting and Filtering/Searching for items (done)
+- Pagination and the ability to pre-populate the application with items (done)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For the sake of usability, I have added a `completed` property which indicates wether the specific TODO has been done. On save, a random id is generated and returned from the backend for each new entity, thus the final object looks like so:
 
-## Learn More
+```json
+{
+  "title": "foo",
+  "description": "bar",
+  "due_date": new Date(),
+  "completed": false,
+  "id": 123415362454
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## testing
 
-### Code Splitting
+The lack of tests for this app is due to my inexperience with React, and how to specifically test component behaviours.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## misc
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+React seems like a fun framework, and using the Context API makes it very easy to keep track of its state.

@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import TodosContext from "../context/todos/todos.context";
 import Button from "@material-ui/core/Button";
 
-import NewTodoButton from "./New-todo";
-
 const Navbar = () => {
   const todosContext = useContext(TodosContext);
-  const { todos, generateTodo } = todosContext;
+  const { todos, generateTodo, toggleCreateBar } = todosContext;
 
   return (
     <nav className="navbar">
@@ -18,12 +16,14 @@ const Navbar = () => {
       </p>
       <ul>
         <li>
-          <Button className="btn" onClick={generateTodo}>
+          <Button id="generate-btn" className="btn" onClick={generateTodo}>
             Generate
           </Button>
         </li>
         <li>
-          <NewTodoButton />
+          <Button id="new-btn" className="btn" onClick={toggleCreateBar}>
+            New
+          </Button>
         </li>
       </ul>
     </nav>
