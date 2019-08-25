@@ -16,6 +16,7 @@ const TodosState = props => {
     isCreateTodoBaraOpen: false,
     showAlert: false,
     alertMessage: null,
+    alertType: null,
     alert: null,
     loading: false
   };
@@ -83,10 +84,10 @@ const TodosState = props => {
 
   const closeModal = () => dispatch({ type: fromTypes.CLOSE_CONFIRM_MODAL });
 
-  const setAlert = message => {
+  const setAlert = (message, type) => {
     dispatch({
       type: fromTypes.SHOW_ALERT,
-      payload: message
+      payload: { message, type }
     });
     setTimeout(() => {
       dispatch({
@@ -107,6 +108,7 @@ const TodosState = props => {
         showAlert: state.showAlert,
         alert: state.alert,
         alertMessage: state.alertMessage,
+        alertType: state.alertType,
         isCreateTodoBaraOpen: state.isCreateTodoBaraOpen,
         loading: state.loading,
         loadTodos,

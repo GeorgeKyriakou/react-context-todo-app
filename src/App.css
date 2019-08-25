@@ -2,7 +2,8 @@
   --primary-color: #8e4ace;
   --dark-color: #333333;
   --light-color: #f4f4f4;
-  --danger-color: #dc3545;
+  --danger-color: #db3748;
+  --info-color: #91d3ff;
   --success-color: #51cc6d;
   --success-border-color: #44a35a;
 }
@@ -44,6 +45,14 @@
   border: 1px solid var(--success-border-color);
   background: var(--success-color);
   color: #333;
+}
+
+.alert-success {
+  background: var(--success-color);
+}
+
+.alert-info {
+  background: var(--info-color);
 }
 
 .navbar {

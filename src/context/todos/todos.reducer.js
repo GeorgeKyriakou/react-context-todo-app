@@ -59,7 +59,8 @@ export default (state, action) => {
     case fromTypes.SHOW_ALERT: {
       return {
         ...state,
-        alertMessage: action.payload,
+        alertMessage: action.payload.message,
+        alertType: action.payload.type,
         showAlert: true
       };
     }

@@ -3,11 +3,11 @@ import TodosContext from "../context/todos/todos.context";
 
 const Alert = () => {
   const todosContext = useContext(TodosContext);
-  const { showAlert, alertMessage } = todosContext;
+  const { showAlert, alertMessage, alertType } = todosContext;
 
   return (
     showAlert && (
-      <div className={`alert `}>
+      <div className={`alert alert-${alertType}`}>
         <i className="fas fa-info-circle" />
         {alertMessage}
       </div>

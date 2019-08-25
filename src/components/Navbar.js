@@ -13,6 +13,9 @@ const Navbar = () => {
       <h3>
         In queue: <span>{todos.length}</span>
       </h3>
+      <p style={{ color: "lightgrey", fontSize: "12px" }}>
+        Running React v{React.version}
+      </p>
       <ul>
         <li>
           <Button className="btn" onClick={generateTodo}>

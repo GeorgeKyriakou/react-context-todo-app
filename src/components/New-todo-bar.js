@@ -28,7 +28,7 @@ const NewTodoBar = () => {
   const handleOnSubmit = event => {
     event.preventDefault();
     if (newTodo.title === "" || newTodo.description === "") {
-      setAlert("Title and Description fields are mandatory");
+      setAlert("Title and Description fields are mandatory", "info");
     } else {
       createTodo(newTodo);
     }
